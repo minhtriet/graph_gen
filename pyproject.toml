@@ -5,17 +5,13 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "flax==0.12.5",
-    "jax==0.9.1",
+    "torch==2.10.0",
 ]
 
 [dependency-groups]
 dev = [
     "pre-commit>=4.5.1",
     "ruff==0.15.6",
-]
-mac = [
-    "jax-metal==0.1.1",
 ]
 
 [tool.ruff]
