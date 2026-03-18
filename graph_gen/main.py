@@ -2,8 +2,42 @@ import torch
 from torch import nn
 
 
+class ECNN(nn.Module):
+    def __init__(self, n_node, dim_node_e):
+        """
+        The definition are from Appendix C
+        """
+        super().__init__()
+        self.h = nn.Embedding(n_node, dim_node_e)
+        # edge function
+        self.phi_e = nn.Sequential(
+            nn.Linear(in_features, hidden_features),
+            nn.SiLU(),
+            nn.Linear(hidden_features, out_features),
+            nn.SiLU()
+        )
+        # coordinate function
+        self.phi_x = nn.Sequential(
+            nn.Linear(hidden_features, out_features),
+            nn.SiLU(),
+            nn.Linear(hidden_features, out_features),
+        )
+        self.phi_h = nn.Sequential(
+            nn.Linear(hidden_features, out_features),
+            nn.SiLU(),
+            nn.Linear(hidden_features, out_features),
+        )
+    
+    def forward(self, batch):
+        # encoder
+        dist = torch.norm()
 
-class GCNLayer(nn.Module):
+        # decoder
+        pass
+
+
+
+class RefGCNLayer(nn.Module):
     def __init__(self, c_in, c_out):
         super().__init__()
         self.projection = nn.Linear(c_in, c_out)
